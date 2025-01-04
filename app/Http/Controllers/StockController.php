@@ -7,12 +7,16 @@ use App\Models\Products; // Importando o Modelo Produto (que você criará a seg
 
 class StockController extends Controller
 {
+    
+    
+
     public function index()
     {
         // Buscando todos os produtos no estoque
         $products = Products::all();
 
         // Retornando a view com os produtos
+       
         return view('stock.index', compact('products'));
     }
 }

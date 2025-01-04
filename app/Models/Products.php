@@ -12,5 +12,5 @@ class Products extends Model
     protected $table = 'products'; // Nome da tabela (caso seja diferente do padrão plural)
 
     // Defina os campos que podem ser preenchidos
-    protected $fillable = ['name', 'category', 'amount', 'validity','price', 'purchase_date', 'created', 'modified'];
+    protected $fillable = ['name', 'category', 'amount', 'validity','price', 'created_at', 'updated_at'];
 }

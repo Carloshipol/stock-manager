@@ -6,49 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Cadastro de Usuário</title>
-  <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 50px;
-  }
-
-  form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  div {
-    margin-bottom: 15px;
-  }
-
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-
-  button:hover {
-    background-color: #45a049;
-  }
-
-  p {
-    color: red;
-    font-size: 14px;
-  }
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/style_products.css') }}">
 </head>
 
 <body>

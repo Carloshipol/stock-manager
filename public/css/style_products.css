@@ -1,0 +1,93 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 50px;
+  background-color: darkgrey;
+}
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid rgb(10, 10, 10);
+  border-radius: 5px;
+  
+}
+
+/* Estilizando o botão com o ID "button_logout" */
+#button_logout {
+  border: none;  /* Remove qualquer borda */
+  box-shadow: none;  /* Remove qualquer sombra */
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+p {
+  color: red;
+  font-size: 14px;
+}
+
+
+.contorno {
+  border: 1px solid black;  /* Cor do contorno */
+  padding: 10px;               /* Espaçamento interno */
+  border-radius: 8px;          /* Bordas arredondadas */
+  margin-bottom: 10px;         /* Espaçamento entre os campos */
+  background-color: hsl(310, 11%, 56%);   /* Cor de fundo suave */
+  transition: all 0.3s ease;   /* Transição suave para foco */
+}
+
+.contorno input {
+  width: 100%;                 /* Preenche toda a largura da div */
+  padding: 8px;                /* Espaçamento interno do campo */
+  margin-top: 5px;             /* Espaço entre o rótulo e o input */
+  border: 1px solid #ccc;     /* Cor do contorno do input */
+  border-radius: 4px;          /* Bordas arredondadas do input */
+  font-size: 16px;             /* Tamanho da fonte */
+  transition: border-color 0.3s ease;  /* Transição suave no foco */
+}
+
+.contorno input:focus {
+  border-color: #4CAF50;       /* Cor do contorno no foco */
+  outline: none;               /* Remove a borda padrão do navegador */
+}
+
+.contorno label {
+  font-size: 14px;             /* Tamanho da fonte do rótulo */
+  color: #333;                 /* Cor do texto do rótulo */
+  font-weight: bold;           /* Deixa o rótulo em negrito */
+}
+
+/* Para dispositivos móveis, ajustando a largura */
+@media (max-width: 600px) {
+  .contorno {
+    padding: 8px;              /* Reduzindo o padding */
+  }
+  .contorno input {
+    padding: 6px;              /* Reduzindo o padding no input */
+  }
+}
