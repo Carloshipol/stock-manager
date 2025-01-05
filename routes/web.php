@@ -9,6 +9,10 @@ Route::get('/', function () {
 use App\Http\Controllers\StockController;
 
 Route::get('/stock', [StockController::class, 'index']);
+Route::post('/stock/{id}/increase', [StockController::class, 'increaseStock'])->name('stock.increase');
+Route::post('/stock/{id}/decrease', [StockController::class, 'decreaseStock'])->name('stock.decrease');
+Route::post('/stock/update', [StockController::class, 'update'])->name('stock.update');
+
 
 use App\Http\Controllers\AuthController;
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -29,4 +33,5 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::middleware(['auth'])->group(function () {
     Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::post('/stock/update', [StockController::class, 'update'])->name('stock.update');
 });

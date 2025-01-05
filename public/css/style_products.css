@@ -57,7 +57,7 @@ p {
   padding: 10px;               /* Espaçamento interno */
   border-radius: 8px;          /* Bordas arredondadas */
   margin-bottom: 10px;         /* Espaçamento entre os campos */
-  background-color: hsl(310, 11%, 56%);   /* Cor de fundo suave */
+  background-color: #ccc;   /* Cor de fundo suave */
   transition: all 0.3s ease;   /* Transição suave para foco */
 }
 
