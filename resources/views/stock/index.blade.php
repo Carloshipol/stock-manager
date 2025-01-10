@@ -23,59 +23,70 @@
   <!-- Bootstrap JS (inclui Popper.js) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
-
+  <!-- Vite -->
+  @vite([
+  'resources/sass/app.scss',
+  'resources/js/app.js',
+  'resources/css/style.css', // A referência ao novo caminho
+  'resources/css/style_products.css', // A referência ao novo caminho
+  'resources/js/custom.js'
+  ])
 
 </head>
 
 <body>
   @if (Auth::check())
-  <div class="float-right">
-    <form action="{{ route('logout') }}" method="POST" style="display: inline;" id="button_logout">
-      @csrf
-      <button type="submit"
-        class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-red-500 focus:outline-none focus:ring-0 border-none transition-colors duration-300">
-        Sair
-      </button>
-    </form>
+  <div id="container-botoes_sair" class="col-md-12">
+    @csrf
+    <button type="button" style="float: right" class="btn button3 col-md-12"
+      onclick="window.location.href='{{ route('home') }}'">
+      Sair
+    </button>
   </div>
   @endif
 
+  <div id="container-botoes">
+    <button type="button" class="btn btn-success" onclick="window.location.href='{{ route('products.create') }}'">
+      Adicionar Produto
+    </button>
+  </div>
+  <br>
+  <div class="col-md-12 contorno_selecionado">
+    <div class="form-group col-md-12 contorno" style="background-color:#eaedee">
+      <h1 class="titulo-formulario">Estoque de Produtos</h1>
+      <table class="display table table-striped table-bordered table-hover ">
+        <thead>
+          <tr>
+            <th>Ação</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
+            <th>Validade</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($products as $produto)
+          <tr>
+            <td>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateStockModal"
+                data-id="{{ $produto->id }}" data-name="{{ $produto->name }}" data-quantity="{{ $produto->amount }}">
+                Atualizar Estoque
+              </button>
 
-  <div class="container mt-5">
-    <h1 class="text-center mb-4">Estoque de Produtos</h1>
-    <table class="table table-striped table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th>Ação</th>
-          <th>Nome</th>
-          <th>Categoria</th>
-          <th>Quantidade</th>
-          <th>Validade</th>
-          <th>Preço</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($products as $produto)
-        <tr>
-          <td>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateStockModal"
-              data-id="{{ $produto->id }}" data-name="{{ $produto->name }}" data-quantity="{{ $produto->amount }}">
-              Atualizar Estoque
-            </button>
-
-          </td>
-          <td>{{ $produto->name }}</td>
-          <td>{{ $produto->category }}</td>
-          <td>{{ $produto->amount }}</td>
-          <td>{{ \Carbon\Carbon::parse($produto->validity)->format('d/m/Y') }}</td>
-          <td>R$ {{ number_format($produto->price, 2, ',', '.') }}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+            </td>
+            <td>{{ $produto->name }}</td>
+            <td>{{ $produto->category }}</td>
+            <td>{{ $produto->amount }}</td>
+            <td>{{ \Carbon\Carbon::parse($produto->validity)->format('d/m/Y') }}</td>
+            <td>R$ {{ number_format($produto->price, 2, ',', '.') }}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
   </div>
 </body>
 
 </html>
 @include('components.modals')
-<script src="{{ asset('js/custom.js') }}"></script>

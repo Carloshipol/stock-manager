@@ -34,6 +34,6 @@ class UserController extends Controller
         ]);
 
         // Redireciona de volta para a lista de usuários ou página inicial
-        return redirect()->route('users.create')->with('success', 'Usuário criado com sucesso!');
+        return redirect()->route('home')->with('success', 'Usuário criado com sucesso!');
     }
 }

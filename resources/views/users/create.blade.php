@@ -6,7 +6,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Cadastro de Usuário</title>
-  <link rel="stylesheet" href="{{ asset('css/style_products.css') }}">
+  @vite([
+  'resources/sass/app.scss',
+  'resources/js/app.js',
+  'resources/css/style.css', // A referência ao novo caminho
+  'resources/css/style_products.css', // A referência ao novo caminho
+  'resources/js/custom.js'
+  ])
 </head>
 
 <body>

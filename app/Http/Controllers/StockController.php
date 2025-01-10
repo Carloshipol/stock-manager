@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products; // Importando o Modelo Produto
+use Illuminate\Support\Facades\Auth; // Importando a classe Auth
 
 class StockController extends Controller
 {
     public function index()
     {
         // Buscando todos os produtos no estoque
-        $products = Products::all();
+        // Filtra os produtos para mostrar apenas os do usuário logado
+        $products = Products::where('user_id', Auth::id())->get();
 
         // Retornando a view com os produtos
         return view('stock.index', compact('products'));

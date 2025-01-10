@@ -10,7 +10,7 @@
           <h5 class="modal-title" id="updateStockModalLabel">Atualizar Estoque</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="background-color:#eaedee">
           <input type="hidden" name="product_id" id="product-id">
           <p id="product-name"></p>
           <div class="mb-3">

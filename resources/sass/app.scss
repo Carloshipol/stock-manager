@@ -1,0 +1,9 @@
+// 1. Primeiro, as importações @use devem vir no topo
+@use 'variables' as *;  // Agora você usa as variáveis diretamente
+@use 'bootstrap/scss/bootstrap' as *;  // Inclui todos os componentes do Bootstrap
+@use '../css/style_products.css' as *;  // Inclui o arquivo 'styles.scss'
+
+// 2. Agora você pode adicionar as outras regras, como fontes e estilos
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Qualquer outro CSS ou Sass após as regras @use
