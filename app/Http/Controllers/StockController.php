@@ -62,5 +62,35 @@ class StockController extends Controller
     return redirect()->back()->with('success', 'Estoque atualizado com sucesso!');
 }
 
+public function insert(Request $request)
+{
+    // Validando os dados
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'category' => 'required|string|max:255',
+        'amount' => 'required|integer',
+        'validity' => 'required|date',
+        'price' => 'required|numeric',
+    ]);
+
+    try {
+        // Criando o produto
+        Products::create([
+            'name' => $request->name,
+            'category' => $request->category,
+            'amount' => $request->amount,
+            'validity' => $request->validity,
+            'price' => $request->price,
+            'user_id' => Auth::id(), // Associando ao usuário logado
+        ]);
+
+        return redirect()->route('stock.index')->with('success', 'Produto cadastrado com sucesso!');
+    } catch (\Exception $e) {
+        return redirect()->route('stock.index')->with('error', 'Erro ao cadastrar o produto.');
+    }
+}
+
+
+
 
 }

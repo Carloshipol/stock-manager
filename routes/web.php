@@ -25,15 +25,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     
     // Rotas do controlador de estoque
-    Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
-    Route::post('/stock/{id}/increase', [StockController::class, 'increaseStock'])->name('stock.increase');
-    Route::post('/stock/{id}/decrease', [StockController::class, 'decreaseStock'])->name('stock.decrease');
-    Route::post('/stock/update', [StockController::class, 'update'])->name('stock.update');
+    Route::prefix('stock')->group(function () {
+        Route::get('/', [StockController::class, 'index'])->name('stock.index');
+        Route::post('{id}/increase', [StockController::class, 'increaseStock'])->name('stock.increase');
+        Route::post('{id}/decrease', [StockController::class, 'decreaseStock'])->name('stock.decrease');
+        Route::post('/update', [StockController::class, 'update'])->name('stock.update');
+        Route::post('/stock/insert', [StockController::class, 'insert'])->name('stock.insert');
+    });
+
+    // Rotas do ProductController
+    Route::prefix('products')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('products.index'); // Página de listagem de produtos
+        Route::get('/data', [ProductController::class, 'getData'])->name('products.data');
+        Route::resource('create', ProductController::class)->only(['create', 'store']);
+    });
     
     // Outras rotas protegidas
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::resource('users', UserController::class)->only(['create', 'store']);
 });
